@@ -2,3 +2,6 @@ selenium
 datetime
 undetected_chromedriver
 time
+imaplib
+email
+re

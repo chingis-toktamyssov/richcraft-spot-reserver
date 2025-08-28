@@ -45,60 +45,21 @@ def fillForm():
     name = 'Chingis Toktamyssov'
 
     phone_input = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.NAME, "PhoneNumber"))  # example locator
+        EC.presence_of_element_located((By.NAME, "PhoneNumber"))
     )
     phone_input.send_keys(phone_number)
     print("Filled phone number.")
 
     email_input = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.NAME, "Email"))  # example locator
+        EC.presence_of_element_located((By.NAME, "Email"))
     )    
     email_input.send_keys(email)
     print("Filled email.")
 
     name_input = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.NAME, "field3198"))  # example locator
+        EC.presence_of_element_located((By.NAME, "field3198"))
     )
     name_input.send_keys(name)
     print("Filled name.")
 
     time.sleep(3)
-
-options = uc.ChromeOptions()
-options.binary_location = "/usr/bin/brave"
-driver = uc.Chrome(options=options, headless=False)
-
-link = "https://reservation.frontdesksuite.ca/rcfs/richcraftkanata"
-driver.get(link)
-time.sleep(3)
-
-clickButton("//div[contains(text(), 'Volleyball - adult')]", 'Volleyball - adult')
-clickButton("//button[contains(., 'Confirm')]", 'Confirm')
-
-day, weekday = findDay(1)
-print("Looking for day:", day)
-clickButton(f"//span[contains(text(), '{day}')]", day)
-
-goalTime = findTime(weekday)
-goalTime = "8:45 PM"
-clickButton(f"//a[contains(., '{goalTime}')]", goalTime)
-
-fillForm()
-clickButton("//button[contains(., 'Confirm')]", 'Confirm')
-
-driver.quit()
-
-# try:
-#     goal_time = '7:45 PM'
-#     if future_dt.weekday() == 3:
-#         goal_time = '5:30 PM'
-#     button = driver.find_element(By.XPATH, "//span[contains(text(), goal_time)]")
-#     button.click()
-#     print("Clicked time button:", goal_time)
-# except Exception as e:
-#     print("time button not found", e)
-
-
-# # Optional: Print the page title
-# Close the browser
-driver.quit()
