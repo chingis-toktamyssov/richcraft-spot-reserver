@@ -8,7 +8,7 @@ import undetected_chromedriver as uc
 import time
 
 from handleEmail import get_verification_code
-from venv.handleRichcraft import clickButton, findDay, findTime, fillForm, fillCode
+from handleRichcraft import clickButton, findDay, findTime, fillForm, fillCode
 
 options = uc.ChromeOptions()
 options.binary_location = "/usr/bin/brave"
@@ -18,23 +18,23 @@ link = "https://reservation.frontdesksuite.ca/rcfs/richcraftkanata"
 driver.get(link)
 time.sleep(3)
 
-clickButton("//div[contains(text(), 'Volleyball - adult')]", 'Volleyball - adult')
-clickButton("//button[contains(., 'Confirm')]", 'Confirm')
+clickButton("//div[contains(text(), 'Volleyball - adult')]", 'Volleyball - adult', driver)
+clickButton("//button[contains(., 'Confirm')]", 'Confirm', driver)
 
 day, weekday = findDay(2)
 print("Looking for day:", day)
-clickButton(f"//span[contains(text(), '{day}')]", day)
+clickButton(f"//span[contains(text(), '{day}')]", day, driver)
 
 goalTime = findTime(weekday)
-clickButton(f"//a[contains(., '{goalTime}')]", goalTime)
+clickButton(f"//a[contains(., '{goalTime}')]", goalTime, driver)
 
-fillForm()
-clickButton("//button[contains(., 'Confirm')]", 'Confirm')
+fillForm(driver)
+clickButton("//button[contains(., 'Confirm')]", 'Confirm', driver)
 
 time.sleep(10)
 code = get_verification_code()
 
-fillCode(code)
-clickButton("//button[contains(., 'Confirm')]", 'Confirm')
+fillCode(code, driver)
+clickButton("//button[contains(., 'Confirm')]", 'Confirm', driver)
 
 driver.quit()

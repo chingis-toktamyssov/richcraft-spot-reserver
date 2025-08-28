@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, date
 import undetected_chromedriver as uc
 import time
 
-def clickButton(identifier, name):
+def clickButton(identifier, name, driver):
     try:
         button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, identifier))
@@ -21,7 +21,7 @@ def clickButton(identifier, name):
     
     time.sleep(3)
 
-def findDay(offset=0):
+def findDay(offset):
     date_str = str(date.today())
     dt = datetime.strptime(date_str, "%Y-%m-%d")
 
@@ -39,7 +39,7 @@ def findTime(weekday):
 
     return goal_time
 
-def fillForm():
+def fillForm(driver):
     phone_number = '3432040702'
     email = 'coktamyssovthingis@gmail.com'
     name = 'Chingis Toktamyssov'
@@ -64,7 +64,7 @@ def fillForm():
 
     time.sleep(3)
 
-def fillCode(code):
+def fillCode(code, driver):
     code_input = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.NAME, "code"))
     )
