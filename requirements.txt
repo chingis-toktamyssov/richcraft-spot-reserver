@@ -1,7 +1,2 @@
 selenium
-datetime
 undetected-chromedriver
-time
-imaplib
-email
-re
