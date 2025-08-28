@@ -63,3 +63,12 @@ def fillForm():
     print("Filled name.")
 
     time.sleep(3)
+
+def fillCode(code):
+    code_input = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.NAME, "code"))
+    )
+    code_input.send_keys(code)
+    print("Filled verification code.")
+
+    time.sleep(3)

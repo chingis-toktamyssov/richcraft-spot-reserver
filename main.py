@@ -8,7 +8,7 @@ import undetected_chromedriver as uc
 import time
 
 from handleEmail import get_verification_code
-from handleRichcraft import clickButton, findDay, findTime, fillForm
+from venv.handleRichcraft import clickButton, findDay, findTime, fillForm, fillCode
 
 options = uc.ChromeOptions()
 options.binary_location = "/usr/bin/brave"
@@ -34,6 +34,7 @@ clickButton("//button[contains(., 'Confirm')]", 'Confirm')
 time.sleep(10)
 code = get_verification_code()
 
-###submit ciode
+fillCode(code)
+clickButton("//button[contains(., 'Confirm')]", 'Confirm')
 
 driver.quit()

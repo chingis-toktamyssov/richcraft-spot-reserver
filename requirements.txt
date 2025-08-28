@@ -1,6 +1,6 @@
 selenium
 datetime
-undetected_chromedriver
+undetected-chromedriver
 time
 imaplib
 email
